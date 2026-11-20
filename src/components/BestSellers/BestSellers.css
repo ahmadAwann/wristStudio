@@ -1,0 +1,30 @@
+.best-sellers {
+  padding: var(--section-padding);
+  background: var(--color-bg-primary);
+}
+
+.best-sellers__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.best-sellers__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 1024px) {
+  .best-sellers__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 540px) {
+  .best-sellers__grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

@@ -1,0 +1,199 @@
+.hero {
+  position: relative;
+  min-height: 700px;
+  height: calc(100vh - 88px);
+  max-height: 820px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin-top: 88px; /* navbar height */
+
+  /* Background watch image */
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-color: var(--color-bg-primary); /* fallback */
+}
+
+/* Gradient overlay: opaque dark on left → semi-transparent centre → clear on right */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 14, 20, 0.92) 0%,
+    rgba(8, 14, 20, 0.75) 35%,
+    rgba(8, 14, 20, 0.35) 60%,
+    rgba(8, 14, 20, 0.05) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Inner layout — text sits on the left half */
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+/* Content — constrained to left ~50% so watch stays visible */
+.hero__content {
+  max-width: 520px;
+}
+
+/* Eyebrow */
+.hero__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero__eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--color-gold);
+  flex-shrink: 0;
+}
+
+/* Headline */
+.hero__headline {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 600;
+  line-height: 1.08;
+  color: var(--color-text-main);
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero__headline--gold {
+  color: var(--color-gold);
+  font-style: italic;
+}
+
+/* Description */
+.hero__desc {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: 40px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* CTA buttons */
+.hero__ctas {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__cta-primary {
+  font-size: 12px;
+  padding: 14px 32px;
+}
+
+.hero__cta-outline {
+  font-size: 12px;
+  padding: 13px 28px;
+}
+
+/* Dot indicators */
+.hero__dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 48px;
+}
+
+.hero__dot {
+  width: 24px;
+  height: 2px;
+  background: rgba(198, 166, 107, 0.3);
+  transition: background var(--transition-fast), width var(--transition-fast);
+}
+
+.hero__dot--active {
+  width: 40px;
+  background: var(--color-gold);
+}
+
+/* ── Tablet (900px and below) ── */
+@media (max-width: 900px) {
+  .hero {
+    min-height: 600px;
+    max-height: none;
+    height: auto;
+    /* Shift focus so watch is partly visible even with centred overlay */
+    background-position: 70% center;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 14, 20, 0.80) 0%,
+      rgba(8, 14, 20, 0.70) 60%,
+      rgba(8, 14, 20, 0.85) 100%
+    );
+  }
+
+  .hero__inner {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    justify-content: center;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero__eyebrow {
+    justify-content: center;
+  }
+
+  .hero__eyebrow::before {
+    display: none;
+  }
+
+  .hero__ctas {
+    justify-content: center;
+  }
+
+  .hero__dots {
+    justify-content: center;
+  }
+}
+
+/* ── Mobile (480px and below) ── */
+@media (max-width: 480px) {
+  .hero {
+    min-height: 520px;
+    background-position: 65% center;
+  }
+
+  .hero__headline {
+    font-size: 42px;
+  }
+
+  .hero__cta-primary,
+  .hero__cta-outline {
+    padding: 12px 20px;
+    font-size: 11px;
+  }
+}
